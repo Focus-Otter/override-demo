@@ -15,7 +15,7 @@ import {
 	useDisclosure,
 	Divider,
 } from '@chakra-ui/react'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 const productDetails = [
 	{
@@ -73,16 +73,24 @@ function ShoppingCart({ cartItems }) {
 	)
 }
 
-export default function Home() {
+const Home = () => {
 	const [cartItems, setCartItems] = useState([])
 
-	const handleAddToCart = (product) => {
+	useEffect(() => {
+		const getCartItems = async () => {
+			//do stuff...probably fetch items 🤷‍♂️
+		}
+		getCartItems()
+	}, [])
+
+	const handleAddToCart = async (product) => {
 		setCartItems([...cartItems, product])
+		//this feels like a good spot to publish to a database😏
 	}
 
 	return (
 		<Box>
-			<Heading mb="16" textAlign="center">
+			<Heading textAlign="center" mb="16">
 				Shop our selection!
 			</Heading>
 			<Box mx="10%">
@@ -124,3 +132,5 @@ export default function Home() {
 		</Box>
 	)
 }
+
+export default Home
