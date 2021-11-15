@@ -1,0 +1,42 @@
+{
+  "paths": [
+    {
+      "name": "/cartitems",
+      "lambdaFunction": "overidedemofunc",
+      "privacy": {
+        "private": true,
+        "auth": [
+          "/POST",
+          "/GET",
+          "/PUT",
+          "/PATCH",
+          "/DELETE"
+        ]
+      },
+      "policyResourceName": "/cartitems"
+    }
+  ],
+  "resourceName": "overridedemo",
+  "apiName": "overridedemo",
+  "functionArns": [
+    {
+      "lambdaFunction": "overidedemofunc"
+    }
+  ],
+  "privacy": {
+    "auth": 1,
+    "unauth": 0,
+    "authRoleName": "amplify-overridedemo-dev-202914-authRole",
+    "unAuthRoleName": "amplify-overridedemo-dev-202914-unauthRole"
+  },
+  "dependsOn": [
+    {
+      "category": "function",
+      "resourceName": "overidedemofunc",
+      "attributes": [
+        "Name",
+        "Arn"
+      ]
+    }
+  ]
+}

@@ -15,8 +15,9 @@ import {
 	useDisclosure,
 	Divider,
 } from '@chakra-ui/react'
-import { useState } from 'react'
-
+import { useState, useEffect } from 'react'
+import { API } from 'aws-amplify'
+import { withAuthenticator, AmplifySignOut } from '@aws-amplify/ui-react'
 const productDetails = [
 	{
 		id: 1,
@@ -73,16 +74,30 @@ function ShoppingCart({ cartItems }) {
 	)
 }
 
-export default function Home() {
+const Home = () => {
 	const [cartItems, setCartItems] = useState([])
 
-	const handleAddToCart = (product) => {
+	useEffect(() => {
+		const getCartItems = async () => {
+			const data = await API.get('overridedemo', '/cartitems/object/user')
+			console.log(data)
+		}
+		getCartItems()
+	}, [])
+
+	const handleAddToCart = async (product) => {
 		setCartItems([...cartItems, product])
+		await API.post('overridedemo', '/cartitems', {
+			body: { products: [...cartItems, product] },
+		}).catch((e) => console.log('uh oh...', e))
 	}
 
 	return (
 		<Box>
-			<Heading mb="16" textAlign="center">
+			<Flex m="4" justifyContent="flex-end">
+				<AmplifySignOut />
+			</Flex>
+			<Heading textAlign="center" mb="16">
 				Shop our selection!
 			</Heading>
 			<Box mx="10%">
@@ -124,3 +139,5 @@ export default function Home() {
 		</Box>
 	)
 }
+
+export default withAuthenticator(Home)

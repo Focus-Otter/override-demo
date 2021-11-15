@@ -1,0 +1,26 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-overridedemo-dev-202914-authRole",
+      "UnauthRoleArn": "arn:aws:iam::521776702104:role/amplify-overridedemo-dev-202914-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::521776702104:role/amplify-overridedemo-dev-202914-authRole",
+      "Region": "us-east-1",
+      "DeploymentBucketName": "amplify-overridedemo-dev-202914-deployment",
+      "UnauthRoleName": "amplify-overridedemo-dev-202914-unauthRole",
+      "StackName": "amplify-overridedemo-dev-202914",
+      "StackId": "arn:aws:cloudformation:us-east-1:521776702104:stack/amplify-overridedemo-dev-202914/d4f88360-45bb-11ec-a6b5-125e3f27604f",
+      "AmplifyAppId": "da2ezyyineeph"
+    },
+    "categories": {
+      "auth": {
+        "overridedemo0b59ccc2": {}
+      },
+      "function": {
+        "overidedemofunc": {
+          "deploymentBucketName": "amplify-overridedemo-dev-202914-deployment",
+          "s3Key": "amplify-builds/overidedemofunc-3677326a2b544c745a39-build.zip"
+        }
+      }
+    }
+  }
+}
